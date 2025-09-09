@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Artica - Restaurant HTML Template | Blog</title>
+    <title>Kitaro - Restaurant HTML Template | Blog</title>
     <!-- Stylesheets -->
     <link href="css/bootstrap.css" rel="stylesheet">
     <link href="css/revolution-slider.css" rel="stylesheet">
@@ -66,7 +66,7 @@
                     <div class="outer-container clearfix">
                         <!--Logo Box-->
                         <div class="logo-box">
-                            <div class="logo"><a href="index.html"><img src="images/logo.png" alt="Artica"></a></div>
+                            <div class="logo"><a href="/"><img src="images/logo.png" alt="Kitaro"></a></div>
                         </div>
 
                         <!--Nav Outer-->
@@ -85,7 +85,7 @@
 
                                 <div class="navbar-collapse collapse clearfix">
                                     <ul class="navigation clearfix">
-                                        <li class=""><a href="index.html">Home</a>
+                                        <li class=""><a href="/">Home</a>
                                         </li>
                                         <li><a href="about.html">About</a></li>
                                         <li class="dropdown"><a href="menu.html">Menu</a>
@@ -128,14 +128,14 @@
 
                 <!-- .logo -->
                 <div class="logo text-center">
-                    <a href="index.html"><img src="images/logo-2.png" alt="Artica"></a>
+                    <a href="/"><img src="images/logo-2.png" alt="Kitaro"></a>
                 </div><!-- /.logo -->
 
                 <!-- .Side-menu -->
                 <div class="side-menu">
                     <!-- .navigation -->
                     <ul class="navigation clearfix">
-                        <li class="current"><a href="index.html">Home</a>
+                        <li class="current"><a href="/">Home</a>
                         </li>
                         <li><a href="about.html">About</a></li>
                         <li><a href="reservation.html">Reservation</a></li>
@@ -162,12 +162,13 @@
 
         <!--Page Title-->
         <section class="reservation-section">
-            <div id="thankYouOverlay"
+            <!-- overlay used for success / error messages -->
+            <div id="thankYouOverlay" aria-hidden="true"
                 style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);z-index:9999;justify-content:center;align-items:center;">
-                <div
-                    style="background:#fff;padding:30px 40px;border-radius:15px;text-align:center;font-family:Arial, sans-serif;font-size:18px;box-shadow:0 5px 15px rgba(0,0,0,0.3);">
-                    <h2>Thank You!</h2>
-                    <p>Your table has been successfully booked.</p>
+                <div id="overlayBox"
+                    style="background:#fff;padding:30px 40px;border-radius:15px;text-align:center;font-family:Arial, sans-serif;font-size:18px;box-shadow:0 5px 15px rgba(0,0,0,0.3);min-width:260px;max-width:90%;">
+                    <h2 id="overlayTitle">Thank You!</h2>
+                    <p id="overlayMessage">Your table has been successfully booked.</p>
                 </div>
             </div>
 
@@ -179,7 +180,7 @@
                         <p>Reserve your table at Hakato Kitaro Sushi to enjoy fresh flavors, warm hospitality, and an
                             authentic Fukuoka dining experience.</p>
                         <p>Monday to Saturday <span>5:00 pm - 12:00 am</span> Saturday to Sunday <span>5:00 pm - 11:00
-                                am </span>Note: Arctica Restaurant is closed on holidays.</p>
+                                am </span>Note: Our Restaurant is closed on holidays.</p>
                     </div>
                     <h4>+81924068682</h4>
                 </div>
@@ -272,7 +273,7 @@
                             <div class="footer-column col-md-7 col-sm-7 col-xs-12">
                                 <div class="footer-widget about-widget">
                                     <div class="footer-logo">
-                                        <figure><a href="index.html"><img src="images/footer-logo.png" alt=""></a>
+                                        <figure><a href="/"><img src="images/logo.png" alt=""></a>
                                         </figure>
                                     </div>
                                     <div class="widget-content">
@@ -287,7 +288,7 @@
                                             <li><span class="icon flaticon-technology"></span>Phone :+81924068682
                                             </li>
                                             <li><span class="icon flaticon-empty-email"></span>Email :
-                                                info@Example.com</li>
+                                                info@kitaro.food</li>
                                         </ul>
 
                                     </div>
@@ -300,7 +301,7 @@
                                     <h2>usefull links</h2>
                                     <div class="widget-content">
                                         <ul class="list">
-                                            <li><a href="index.html">Home</a></li>
+                                            <li><a href="/">Home</a></li>
                                             <li><a href="about.html">About Us</a></li>
                                             <li><a href="reservation.html">Reservation</a></li>
                                             <li><a href="menu.html">Menu</a></li>
@@ -376,7 +377,7 @@
                                                     class="dots">................</span>
                                                 <div class="time pull-right">5:00 pm - 11:00 am</div>
                                             </li>
-                                            <li class="note">Note: Arctica Restaurant is closed on holidays.</li>
+                                            <li class="note">Note: Our Restaurant is closed on holidays.</li>
                                         </ul>
 
                                     </div>
@@ -503,22 +504,57 @@
     <script src="js/jquery.easing.min.js"></script>
     <script src="js/script.js"></script>
     <script>
-        // Replace 'yourFormID' with your actual form's ID
+    // AJAX submit for reservation form
+    (function () {
         const form = document.getElementById('myForm');
+        if (!form) return;
         const overlay = document.getElementById('thankYouOverlay');
+        const overlayTitle = document.getElementById('overlayTitle');
+        const overlayMessage = document.getElementById('overlayMessage');
+
+        function showOverlay(title, msg, success = true) {
+            overlayTitle.textContent = title;
+            overlayMessage.textContent = msg;
+            overlay.style.display = 'flex';
+            overlay.setAttribute('aria-hidden','false');
+            // small visual change for errors
+            document.getElementById('overlayBox').style.border = success ? 'none' : '3px solid #d9534f';
+        }
+        function hideOverlay() {
+            overlay.style.display = 'none';
+            overlay.setAttribute('aria-hidden','true');
+        }
 
         form.addEventListener('submit', function (e) {
-            e.preventDefault(); // prevent default submission if needed
+            e.preventDefault();
+            const submitBtn = form.querySelector('button[type="submit"]');
+            submitBtn.disabled = true;
 
-            // Show the thank you overlay
-            overlay.style.display = 'flex';
+            const fd = new FormData(form);
+            fd.append('form', 'reservation');
 
-            // Hide after 2 seconds
-            setTimeout(() => {
-                overlay.style.display = 'none';
-                form.reset(); // optional: reset the form
-            }, 2000);
+            fetch('send.php', {
+                method: 'POST',
+                body: fd,
+                credentials: 'same-origin'
+            }).then(r => r.json().catch(() => ({ success: false, message: 'Invalid server response' })))
+              .then(json => {
+                  if (json && json.success) {
+                      showOverlay('Thank You!', json.message || 'Your reservation has been received.', true);
+                      form.reset();
+                  } else {
+                      showOverlay('Submission Failed', json && json.message ? json.message : 'Could not submit reservation. Please try again later.', false);
+                  }
+              })
+              .catch(err => {
+                  showOverlay('Network Error', 'Unable to send request. Please check your connection and try again.', false);
+              })
+              .finally(() => {
+                  submitBtn.disabled = false;
+                  setTimeout(hideOverlay, 3000);
+              });
         });
+    })();
     </script>
 </body>
 

@@ -1,0 +1,88 @@
+{
+    "sid": "731l1b217muhe418746sosucic",
+    "created_at": "2025-08-26T09:09:06+00:00",
+    "updated_at": "2025-08-26T09:10:17+00:00",
+    "ip": "127.0.0.1",
+    "meta_from_browser": {
+        "page_http_method": "GET",
+        "url": "http://127.0.0.1/",
+        "referrer": "",
+        "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0",
+        "lang": "en-US",
+        "platform": "Win32",
+        "tz": "America/Los_Angeles",
+        "screen": {
+            "w": 1366,
+            "h": 768,
+            "availW": 1366,
+            "availH": 728,
+            "dpr": 0.8999999761581421
+        },
+        "viewport": {
+            "w": 1508,
+            "h": 480
+        },
+        "cookieEnabled": true,
+        "historyLength": 2,
+        "ts": 1756199417265
+    },
+    "server": {
+        "request": {
+            "method": "GET",
+            "uri": "/",
+            "host": "127.0.0.1",
+            "headers": {
+                "HTTP_HOST": "127.0.0.1",
+                "HTTP_CONNECTION": "keep-alive",
+                "HTTP_SEC_CH_UA": "\"Not;A=Brand\";v=\"99\", \"Microsoft Edge\";v=\"139\", \"Chromium\";v=\"139\"",
+                "HTTP_SEC_CH_UA_MOBILE": "?0",
+                "HTTP_SEC_CH_UA_PLATFORM": "\"Windows\"",
+                "HTTP_UPGRADE_INSECURE_REQUESTS": "1",
+                "HTTP_USER_AGENT": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0",
+                "HTTP_ACCEPT": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+                "HTTP_SEC_FETCH_SITE": "none",
+                "HTTP_SEC_FETCH_MODE": "navigate",
+                "HTTP_SEC_FETCH_USER": "?1",
+                "HTTP_SEC_FETCH_DEST": "document",
+                "HTTP_ACCEPT_ENCODING": "gzip, deflate, br, zstd",
+                "HTTP_ACCEPT_LANGUAGE": "en-US,en;q=0.9"
+            },
+            "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"
+        },
+        "serverphp_request": {
+            "method": "POST",
+            "uri": "/server.php",
+            "host": "127.0.0.1",
+            "headers": {
+                "HTTP_HOST": "127.0.0.1",
+                "HTTP_CONNECTION": "keep-alive",
+                "HTTP_CONTENT_LENGTH": "486",
+                "HTTP_SEC_CH_UA_PLATFORM": "\"Windows\"",
+                "HTTP_X_REQUESTED_WITH": "Recorder",
+                "HTTP_USER_AGENT": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0",
+                "HTTP_SEC_CH_UA": "\"Not;A=Brand\";v=\"99\", \"Microsoft Edge\";v=\"139\", \"Chromium\";v=\"139\"",
+                "HTTP_CONTENT_TYPE": "application/json",
+                "HTTP_SEC_CH_UA_MOBILE": "?0",
+                "HTTP_ACCEPT": "*/*",
+                "HTTP_ORIGIN": "http://127.0.0.1",
+                "HTTP_SEC_FETCH_SITE": "same-origin",
+                "HTTP_SEC_FETCH_MODE": "cors",
+                "HTTP_SEC_FETCH_DEST": "empty",
+                "HTTP_REFERER": "http://127.0.0.1/",
+                "HTTP_ACCEPT_ENCODING": "gzip, deflate, br, zstd",
+                "HTTP_ACCEPT_LANGUAGE": "en-US,en;q=0.9",
+                "HTTP_COOKIE": "PHPSESSID=731l1b217muhe418746sosucic"
+            },
+            "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36 Edg/139.0.0.0"
+        }
+    },
+    "ip_info": {
+        "status": "fail",
+        "message": "private or loopback",
+        "query": "127.0.0.1",
+        "country": "unknown",
+        "countryCode": "XX"
+    },
+    "tags": [],
+    "action_taken": null
+}
